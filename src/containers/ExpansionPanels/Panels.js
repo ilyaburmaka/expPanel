@@ -1,15 +1,22 @@
 import React, { Component,Fragment } from 'react'
+// constants
 import { NameTabs } from 'constants/ExpansionPanels/ExpansionPanels'
-import Panel from 'components/ExpansionPanels/ExpansionPanels'
-import MyText from 'components/ExpansionPanels/Mytext'
+// components
+import ExpansionPanel from 'components/ExpansionPanels/Panels/ExpansionPanels'
+import Typography from 'components/ExpansionPanels/Content/Content'
+// styles
 import { Wrapper } from 'styles/Panels/styles'
+import styles from 'styles/Panels/style.css'
+
+
+
 class Panels extends Component {
     state = {
         activeTab: ''
     }
 
     handleSubmit = (activeTab) => () => {
-        this.setState(this.state.activeTab === activeTab ? { activeTab: '' } : { activeTab })
+        this.setState(this.state.activeTab === activeTab ? {activeTab: ''} : {activeTab})
     }
 
     render() {
@@ -19,20 +26,20 @@ class Panels extends Component {
         <h1>Accordion TASK</h1>
         {NameTabs.map((item,index)=>
            <Fragment key={index}>
-              <Panel
+              <ExpansionPanel
                 header={item.mainTitle}
                 handleTabChange={this.handleSubmit(item.value)}
               />
-              <MyText
+              <Typography
                 active={item.value}
                 act={activeTab}
               />
            </Fragment>
         )}
       </Wrapper>
-    );
+    )
   }
 }
 
 
-export default Panels;
+export default Panels
